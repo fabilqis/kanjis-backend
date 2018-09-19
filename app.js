@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
 
-var indexRouter = require('./routes/index');
-var kanjiRouter = require('./api/routes/kanjis')
+var indexRouter = require('./api/routes/index');
+var kanjiRouter = require('./api/routes/kanjis/index')
 
 var app = express();
 app.use(cors())
