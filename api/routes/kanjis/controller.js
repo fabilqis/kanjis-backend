@@ -1,10 +1,32 @@
 const Kanjis = require('./model')
 
+const DUMMY_DATA = [
+    {
+        kanji: "日",
+        kunyomi: "ひ、び、か",
+        onyomi: "ニチ、ニ、ジツ",
+        imi: "Sun, Day",
+        tatoeba: "日本　にほん　Japan"
+    }]
+
 const controller = {
+    seed: (req, res, next) => {
+        Kanjis
+            .insertMany(DUMMY_DATA)
+            .then(kanjis => {
+                res.status(200).send(kanjis)
+            })
+            .catch(error => {
+                res.status(400).send({
+                    message: error
+                })
+            })
+    },
+
     get: async (req, res, next) => {
         Kanjis.find()
-    .then(cards => {
-        res.status(200).send(cards)
+    .then(kanjis => {
+        res.status(200).send(kanjis)
         })
         .catch(error => 
             res.status(400).send({
@@ -29,20 +51,41 @@ const controller = {
             })
     },
 
-    post : async (req, res, next) => {
-        const newKanji = {
-            kanji : req.body.kanji,
-            kunyomi : req.body.kunyomi,
-            onyomi : req.body,onyomi,
-            imi : req.body.imi,
-            tatoeba : req.body.tatoeba
+    post: (req, res, next) => {
+        const {
+            kanji,
+            kunyomi,
+            onyomi,
+            imi,
+            tatoeba
+        } = req.body;
+        if (
+            kanji &&
+            kunyomi &&
+            onyomi &&
+            imi &&
+            tatoeba 
+        ){
+            const newKanjis = {
+                kanji,
+                kunyomi,
+                onyomi,
+                imi,
+                tatoeba
+            }
+            Kanjis
+                .create(newKanjis)
+                .then(kanjis => {
+                    res.status(201).send(kanjis)
+                })
+                .catch(error => {
+                    res.status(400).send(error)
+                })
         }
-        console.log(req.body)
-
-        const card = await Kanjis.create(newKanji)
-        res.status(201).send({
-            card
-        })
+        else{
+            res.status(400).send({message: 'You must fill every field!'})
+            console.log('You must fill every field!')
+        }
     }
 }
 
