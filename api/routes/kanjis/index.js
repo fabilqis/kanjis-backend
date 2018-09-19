@@ -4,7 +4,7 @@ const router = express.Router()
 const controller = require('./controller')
 
 router.get('/', controller.get)
-router.get('/:kanji', controller.getByKanji)
-router.post('/add', controller.post)
+router.get('/list/:kanji', controller.getByKanji)
+router.post('/', controller.post)
 
 module.exports = router

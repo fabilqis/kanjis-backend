@@ -15,7 +15,7 @@ const controller = {
 
     getByKanji : async(req, res, next) => {
         Kanjis.findOne({
-            _id : req.params._id
+            kanji : req.params.kanji
         })
             .populate('card')
             .exec((err, result) => {
@@ -40,7 +40,6 @@ const controller = {
         console.log(req.body)
 
         const card = await Kanjis.create(newKanji)
-        res.redirect('/kanji')
         res.status(201).send({
             card
         })
