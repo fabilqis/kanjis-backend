@@ -1,0 +1,8 @@
+{
+    "name": "kanjis",
+    "description": "Backend of kanji card",
+    "repository": "https://github.com/fabilqis/backend-kanji",
+    "keywords": ["nodejs", "express", "mongodb", "mongoose"],
+    "image": "heroku/nodejs"
+}
+  

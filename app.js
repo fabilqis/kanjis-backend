@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 
 var indexRouter = require('./api/routes/index');
-var kanjiRouter = require('./api/routes/kanjis/index')
+var kanjiRouter = require('./api/routes/kanjis/')
 
 var app = express();
 app.use(cors())
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/kanjis', kanjiRouter);
+app.use('/kanji', kanjiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

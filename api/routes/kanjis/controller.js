@@ -7,7 +7,15 @@ const DUMMY_DATA = [
         onyomi: "ニチ、ニ、ジツ",
         imi: "Sun, Day",
         tatoeba: "日本　にほん　Japan"
-    }]
+    },
+    {
+        kanji: "月",
+        kunyomi: "つき",
+        onyomi: "ゲツ、ガツ",
+        imi: "Moon, Month",
+        tatoeba: "1月　いち。がつ　January"
+    }
+]
 
 const controller = {
     seed: (req, res, next) => {
@@ -39,7 +47,7 @@ const controller = {
         Kanjis.findOne({
             kanji : req.params.kanji
         })
-            .populate('card')
+            .populate('kanjis')
             .exec((err, result) => {
                 console.log('result :', result)
                 res.status(200).send(result)
@@ -75,8 +83,8 @@ const controller = {
             }
             Kanjis
                 .create(newKanjis)
-                .then(kanjis => {
-                    res.status(201).send(kanjis)
+                .then(kanji => {
+                    res.status(201).send(kanji)
                 })
                 .catch(error => {
                     res.status(400).send(error)
