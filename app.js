@@ -4,12 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
+var favicon = require('serve-favicon')
 
 var indexRouter = require('./api/routes/index');
 var kanjiRouter = require('./api/routes/kanjis/')
 
 var app = express();
 app.use(cors())
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.use(logger('dev'));
 app.use(express.json());
