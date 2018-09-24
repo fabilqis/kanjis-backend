@@ -3,7 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator')
 const Schema = mongoose.Schema
 
 mongoose.connect('mongodb://mirai:123asd@ds261342.mlab.com:61342/kanjis')
-// mongoose.connect('mongodb://localhost:27017')
+// mongoose.connect('mongodb://localhost:27017/backend-kanji')
 
 const KanjiSchema = new Schema({
     kanji:{

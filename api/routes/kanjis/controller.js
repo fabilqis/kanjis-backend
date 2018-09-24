@@ -31,7 +31,7 @@ const controller = {
             })
     },
 
-    get: async (req, res, next) => {
+    get: (req, res, next) => {
         Kanjis.find()
     .then(kanjis => {
         res.status(200).send(kanjis)
@@ -43,7 +43,7 @@ const controller = {
         )
     },
 
-    getByKanji : async(req, res, next) => {
+    getByKanji : (req, res, next) => {
         Kanjis.findOne({
             kanji : req.params.kanji
         })
