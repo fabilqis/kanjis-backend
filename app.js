@@ -7,7 +7,7 @@ var cors = require('cors')
 var favicon = require('serve-favicon')
 
 var indexRouter = require('./api/routes/index');
-var kanjiRouter = require('./api/routes/kanjis/')
+var kanjiRouter = require('./api/routes/kanjis')
 
 var app = express();
 app.use(cors())
