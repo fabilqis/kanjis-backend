@@ -11,13 +11,12 @@ var kanjiRouter = require('./api/routes/kanjis/')
 
 var app = express();
 app.use(cors())
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'favicon.ico')))
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/kanji', kanjiRouter);
